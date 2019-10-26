@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'check/in'
   get 'check/out'
 
-  #get ':controller(/:action(/:id))'
-
+  # goodmin
+  mount Admin::Engine, at: "admin"
 end
