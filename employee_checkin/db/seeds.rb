@@ -13,6 +13,10 @@ employess = Employee.create([{names:'Jorge', last_name:'Cabrera', email:'correo1
 
 
  employee = Employee.find(1)
+ 
+ time = Time.parse("Sep 23 2019 9:11")
+ assistance = Assistance.new :checkin => time, :checkout => time + 9*3600
+ employee.assistances << assistance
 
  time = Time.parse("Oct 23 2019 9:11")
  assistance = Assistance.new :checkin => time, :checkout => time + 9*3600

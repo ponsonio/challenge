@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  root 'check#index'
   get 'check/index'
   get 'check/in'
   get 'check/out'
+  get 'report/index'
 
+  
   # goodmin
   mount Admin::Engine, at: "admin"
+
+  # mount GrapeSwaggerRails::Engine, at: "/documentation"
+
+  Rails.application.routes.draw do
+    mount API::Base, at: "/"
+  end
+
 end

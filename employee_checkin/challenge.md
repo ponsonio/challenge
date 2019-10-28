@@ -19,3 +19,5 @@ Consideraciones:
 - API debe estar documentado
 - Usar PostgreSQL
 - El criterio del postulante será el punto más importante a evaluar.
+
+

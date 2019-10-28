@@ -3,12 +3,12 @@ class CheckController < ApplicationController
 
   def index
     employee_id = params[:employee_id].to_i
-    @last_assistance = get_last_assistance(employee_id)
+    @last_assistance, @assistances = get_last_assistance(employee_id)
   end
 
   def in
     @employee_id = params[:employee_id]
-    @last_assistance = get_last_assistance(@employee_id)
+    @last_assistance, @assistance = get_last_assistance(@employee_id)
     if @last_assistance.nil? || !@last_assistance.checkin.nil?
       @last_assistance = Assistance.new
       @last_assistance.employee_id = @employee_id
@@ -21,7 +21,7 @@ class CheckController < ApplicationController
 
   def out
     @employee_id = params[:employee_id]
-    @last_assistance = get_last_assistance(@employee_id)
+    @last_assistance, @assistance = get_last_assistance(@employee_id)
     if !@last_assistance.nil? && @last_assistance.checkout.nil?
       @last_assistance.checkout = Time.now
       @last_assistance.save!
@@ -36,6 +36,6 @@ class CheckController < ApplicationController
     else
       @employee = Employee.find(1)
     end
-    @employee.assistances.order(created_at: :asc).last(1).first
+    return @employee.assistances.order(created_at: :asc).last(1).first, @employee.assistances
   end
 end

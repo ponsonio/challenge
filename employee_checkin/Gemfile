@@ -39,6 +39,25 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Godmin
 gem "admin", path: "admin"
 
+# Grape
+gem 'grape'
+
+gem 'grape-active_model_serializers'
+
+gem 'rack-cors', :require => 'rack/cors'
+
+gem 'grape-swagger'
+
+#  Bootstrasp
+
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
+# For Grape::Entity ( https://github.com/ruby-grape/grape-entity )
+gem 'grape-swagger-entity'
+# For representable ( https://github.com/apotonick/representable )
+gem 'grape-swagger-representable'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,0 +1,42 @@
+<h1>Reporte Asistencia Empleados Mes</h1>
+<ul class="list-group">
+    <li class="list-group-item">Inicio:<%=@date.beginning_of_month%></li>
+    <li class="list-group-item">Hasta:<%=@date.end_of_month%></li>
+<ul>
+<main>
+    <section <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Asistencias</th>
+                    <th>Total Horas</th>
+                </tr>
+                <%report_total = 0%>
+                <% @employees.each do |employee| %>
+                    <tr>
+                        <%employee_total = 0%>
+                        <% assistances =  employee.assistances.select { |assistance| assistance.checkin >= @date.beginning_of_month && assistance.checkin <= @date.end_of_month }%>
+                        <td><%= employee.id %></td>
+                        <td><%= employee.names %></td>
+                        <td><%= employee.last_name %></td>
+                        <td><%= employee.email %></td>
+                        <td><%= employee.gender %></td>
+                        <td><%= assistances.count%></td>
+                        <% assistances.each do |assistance| %>
+                            <%employee_total += assistance.hours%>
+                        <% end %>
+                        <td><%=employee_total%></td>
+                    </tr>
+                    <%report_total += employee_total%>
+                <% end %>
+                <tr>
+                    <td colspan="6">Total Horas:</td>
+                    <td><%=report_total%></td>
+                </tr>
+            </table>
+        </section>
+</main>

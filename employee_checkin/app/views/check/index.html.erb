@@ -1,28 +1,57 @@
 <h1>Asistencia Empleados</h1>
 
-<section>
-    <div>
-        <h2>Empleado</h2>
-        <ul>
-            <li>Id: <%=@employee.id%></li>
-            <li>Nombres: <%=@employee.names%></li>
-            <li>Apellidos: <%=@employee.last_name%></li>
-            <li>Email: <%=@employee.email%></li>
-            <li>Género: <%=@employee.gender%></li>
-        <ul>
-    <div>
-    <div>
-        <h2>Ultima asistencia</h2>
-        <h3><%=@message%></h3>
-        <% unless @last_assistance.nil? %>
-            <p>CheckIn: <%=@last_assistance.checkin%></p>
-            <p>CheckOut: <%=@last_assistance.checkout%></p>    
-        <% end %>
-    </div> 
-</section>
-<section>
-    <%= link_to('Realizar Check In', {:action => 'in', :employee_id => @employee.id}) %> 
-    <%= link_to('Realizar Check Out', {:action => 'out', :employee_id => @employee.id}) %>  
-</section>
+<main>
+    <section class="panel panel-default">
+        <section class="panel panel-default">
+            <div class="panel panel-default">
+                <h2>Empleado:</h2>
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Id: <%=@employee.id%></li>
+                        <li class="list-group-item">Nombres: <%=@employee.names%></li>
+                        <li class="list-group-item">Apellidos: <%=@employee.last_name%></li>
+                        <li class="list-group-item">Email: <%=@employee.email%></li>
+                        <li class="list-group-item">Género: <%=@employee.gender%></li>
+                    <ul>
+                </div>
+            <div>
+            <div class="panel panel-default">
+                <h2>Ultima asistencia</h2>
+                <h3><%=@message%></h3>
+                <div>
+                    <ul class="list-group">
+                    <% unless @last_assistance.nil? %>
+                        <li class="list-group-item">CheckIn: <%=@last_assistance.checkin%></li>
+                        <li class="list-group-item">CheckOut: <%=@last_assistance.checkout%></li>    
+                    <% end %>
+                </div>
+                <%= link_to('Realizar Check In', {:action => 'in', :employee_id => @employee.id}) %> 
+                <%= link_to('Realizar Check Out', {:action => 'out', :employee_id => @employee.id}) %>  
+            </div> 
+        </section>
+        <section>
+            <table class="table">
+            <tr>
+                <th>Entrada (checkin)</th>
+                <th>Salida (checkout)</th>
+                <th>Horas</th>
+            </tr>
+            <%hours, hours_day = 0%>
+            <% @assistances.each do |assistance| %>
+                <tr>
+                    <td><%= assistance.checkin %></td>
+                    <td><%= assistance.checkout %></td>
+                    <td><%= assistance.hours%>
+                    <%hours += assistance.hours%>
+                </tr>
+            <% end %>
+            <tr>
+                <td>Total Horas</td>
+                <td><%=hours%></td>
+            </tr>
+            </table>
 
+        </section>
+    </section>
+</main>
 
