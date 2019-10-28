@@ -48,5 +48,4 @@ class CheckControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil(last_assistance.checkout, 'checkout date should be not null')
   end
 
-
 end
