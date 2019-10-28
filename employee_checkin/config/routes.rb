@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :assistances
+  resources :employees
   get 'check/index'
   get 'check/in'
   get 'check/out'
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   # mount GrapeSwaggerRails::Engine, at: "/documentation"
 
   Rails.application.routes.draw do
+  resources :assistances
+  resources :employees
     mount API::Base, at: "/"
   end
 
