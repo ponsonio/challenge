@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+   # root 'check/index?employee_id=1'
   resources :assistances
   resources :employees
   get 'check/index'
@@ -6,16 +8,13 @@ Rails.application.routes.draw do
   get 'check/out'
   get 'report/index'
 
+  get 'search/new'
+  post 'search/search'
   
   # goodmin
   mount Admin::Engine, at: "admin"
 
-  # mount GrapeSwaggerRails::Engine, at: "/documentation"
-
-  Rails.application.routes.draw do
-  resources :assistances
-  resources :employees
-    mount API::Base, at: "/"
-  end
-
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+  
 end
