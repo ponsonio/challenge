@@ -1,4 +1,6 @@
 class Assistance < ApplicationRecord
+
+    validates :employee_id, :checkin, presence: true
     belongs_to :employee
 
     def hours
