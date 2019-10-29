@@ -16,8 +16,10 @@ class AssistancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create assistance" do
-      post assistances_url, params: { assistance: { checkin: @assistance.checkin, checkout: @assistance.checkout, employee_id: @assistance.employee_id } }
-      assert_response :success
+    post assistances_url,
+         params: {assistance: {checkin: @assistance.checkin, checkout:
+             @assistance.checkout, employee_id: @assistance.employee_id}}
+    assert_response :success
   end
 
   test "should show assistance" do
@@ -31,7 +33,9 @@ class AssistancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update assistance" do
-    patch assistance_url(@assistance), params: { assistance: { checkin: @assistance.checkin, checkout: @assistance.checkout, employee_id: @assistance.employee_id } }
+    patch assistance_url(@assistance),
+          params: {assistance: {checkin: @assistance.checkin, checkout:
+              @assistance.checkout, employee_id: @assistance.employee_id}}
     assert_response :success
   end
 

@@ -16,7 +16,7 @@ class CheckController < ApplicationController
       @last_assistance.checkin = Time.now
       @last_assistance.save!
     else
-      @message = "Tiene un checkin abierto, debe cerrarlo primero"
+      @message = 'Tiene un checkin abierto, debe cerrarlo primero'
     end
   end
 
@@ -27,7 +27,7 @@ class CheckController < ApplicationController
       @last_assistance.checkout = Time.now
       @last_assistance.save!
     else
-      @message = "No tiene un checkin abierto para cerrar"
+      @message = 'No tiene un checkin abierto para cerrar'
     end
   end
 

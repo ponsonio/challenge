@@ -1,9 +1,11 @@
 <h1>Busqueda de empleados</h1>
 <main>
-    <section <div class="table-responsive">
-    <%= form_tag(search_search_path) do %>
+  <section>
+    <div class="table-responsive">
+      <%= form_tag(search_search_path) do %>
         Nombre: <%= text_field_tag :name %>
-    <%= submit_tag 'Search' %>
-<% end %>
-</section>
+        <%= submit_tag 'Search' %>
+      <% end %>
+    </div>
+  </section>
 </main>

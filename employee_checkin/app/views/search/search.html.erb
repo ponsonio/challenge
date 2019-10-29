@@ -1,24 +1,26 @@
 <h1>Resultado busqueda de empleados</h1>
 <main>
-    <section <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th>Id</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Asistencias</th>
-                </tr>
-                <% @employees.each do |employee| %>
-                    <tr>
-                        <td><%= employee.id %></td>
-                        <td><%= employee.names %></td>
-                        <td><%= employee.last_name %></td>
-                        <td><%= employee.email %></td>
-                        <td><%= employee.gender %></td>
-                        <td><%= employee.assistances.count%></td>
-                <% end %>
-            </table>
-        </section>
+  <section>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>Id:</th>
+          <th>Nombres:</th>
+          <th>Apellidos:</th>
+          <th>Email:</th>
+          <th>Gender:</th>
+          <th>Asistencias:</th>
+        </tr>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.id %></td>
+            <td><%= employee.names %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.gender %></td>
+            <td><%= employee.assistances.count %></td>
+        <% end %>
+      </table>
+    </div>
+  </section>
 </main>

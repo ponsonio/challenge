@@ -1,24 +1,24 @@
 <h1>Check-Out</h1>
 <section>
-    <div>
-        <h2>Empleado</h2>
-        <ul>
-            <li>Id: <%=@employee.id%></li>
-            <li>Nombres: <%=@employee.names%></li>
-            <li>Apellidos: <%=@employee.last_name%></li>
-            <li>Email: <%=@employee.email%></li>
-            <li>Género: <%=@employee.gender%></li>
-        <ul>
-    <div>
-    <div>
-        <h2>Ultima asistencia</h2>
-        <h3><%=@message%></h3>
-        <% unless @last_assistance.nil? %>
-            <p>CheckIn: <%=@last_assistance.checkin%></p>
-            <p>CheckOut: <%=@last_assistance.checkout%></p>    
-        <% end %>
-    </div>
+  <div>
+    <h2>Empleado</h2>
+    <ul>
+      <li>Id: <%= @employee.id %></li>
+      <li>Nombres: <%= @employee.names %></li>
+      <li>Apellidos: <%= @employee.last_name %></li>
+      <li>Email: <%= @employee.email %></li>
+      <li>Género: <%= @employee.gender %></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Ultima asistencia</h2>
+    <h3><%= @message %></h3>
+    <% unless @last_assistance.nil? %>
+      <p>CheckIn: <%= @last_assistance.checkin %></p>
+      <p>CheckOut: <%= @last_assistance.checkout %></p>
+    <% end %>
+  </div>
 </section>
 <section>
-    <%= link_to('Volver', {:action => 'index', :employee_id => @employee.id}) %>
+  <%= link_to('Volver', {:action => 'index', :employee_id => @employee.id}) %>
 </section>
