@@ -96,8 +96,9 @@ The following rationales and assumtions have been taken:
 
 3.-Api needs to be secured using a token on another security artefact, but it's not implemented because time constrains.
 
-4.-Personal and sensitive information should be encripted accordin to organization practices and policies, this also have been omitted.
+4.-Personal and sensitive (email, gender) information should be encripted according to organization lays and country practices, this also have been omitted.
 
+5.- Test for generated code gave been omited as they seems not to be relevant to the evaluation
 
 ## Todo:
 The following represents improvement that haven't been adreesed due time contricstricions:
@@ -108,7 +109,7 @@ The following represents improvement that haven't been adreesed due time contric
 
 3.2.- An employee should only see his assistances.
 
-3.-Test: More test need to be added such as ede cases (verify sums)
+3.-Test: More test need to be added such as ede cases (ex: verify sums), reports and searches.
 
 4.-Api should be versioned (/v1/)
 
@@ -118,7 +119,6 @@ The following represents improvement that haven't been adreesed due time contric
 
 7.- Factory Girl/Factory Boot gem could be adopted to create test data and seeds, still the size of the project and it's concerns isn't bifg enought to make this an important point.
 
+8.- Messages on the check in and out should use the build in message/exception functionalities
+
 ## Bugs:
-
-
-

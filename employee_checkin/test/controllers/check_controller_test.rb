@@ -39,13 +39,42 @@ class CheckControllerTest < ActionDispatch::IntegrationTest
     assert_nil(last_assistance.checkout, 'checkout date should be null')
   end
 
+  test "should not check in if there's a previuos opened checkin" do
+    # arrange: need to create an unclosed assistance  
+    assistance = Assistance.new({employee_id: @employee.id, checkin: Time.now, checkout: nil })
+    assistance.save
+
+    # arrange: act
+    start = @employee.assistances.count
+    get check_in_url + '?employee_id=' + @employee.id.to_s
+    assert_response :success
+
+    # assert:
+    last_assistance = @employee.assistances.order(created_at: :asc).last(1).first
+    assert_equal(start, @employee.assistances.count, 'should not have created a new assistance')
+  end
+
   test "should check out" do
     get check_in_url + '?employee_id=' + @employee.id.to_s
     get check_out_url + '?employee_id=' + @employee.id.to_s
     assert_response :success
-    @employee = Employee.find(@employee.id)
     last_assistance = @employee.assistances.order(created_at: :asc).last(1).first
     assert_not_nil(last_assistance.checkout, 'checkout date should be not null')
+  end
+
+  test "should not check out if there isn't a previuos opened checkin" do
+    # arrange: need a previous check in closed 
+    assistance = Assistance.new({employee_id: @employee.id, checkin: Time.now, checkout: Time.now })
+    assistance.save
+
+    # arrange: act
+    start = @employee.assistances.count
+    get check_in_out + '?employee_id=' + @employee.id.to_s
+    assert_response :success
+
+    # assert:
+    last_assistance = @employee.assistances.order(created_at: :asc).last(1).first
+    assert_equal(start, @employee.assistances.count, 'should not have created a new assistance')
   end
 
 end

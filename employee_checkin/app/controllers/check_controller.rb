@@ -9,7 +9,8 @@ class CheckController < ApplicationController
   def in
     @employee_id = params[:employee_id]
     @last_assistance, @assistance = get_last_assistance(@employee_id)
-    if @last_assistance.nil? || !@last_assistance.checkin.nil?
+
+    if @last_assistance.nil? || !@last_assistance.checkout.nil?
       @last_assistance = Assistance.new
       @last_assistance.employee_id = @employee_id
       @last_assistance.checkin = Time.now
