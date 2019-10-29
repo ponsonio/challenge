@@ -1,8 +1,6 @@
 # README
 The present repo corresponds to the exercise described in _challenge.md_.
- 
-## Pre-requisites
- 
+## Pre-requisites  
 1.-Ruby version: 2.6.3
 2.-Posgresql 11
  
@@ -24,15 +22,14 @@ rails test
  
 ## Run locally
 To run the project locally:
- 
 ```
 rails server
 ```
  
-# Usage
+## Usage
  
 _Admin user:_
-1.-The admin interface is placed in:
+1.-The admin (goodmin) interface is placed in:
  
 http://localhost:3000/admin/
  
@@ -88,7 +85,7 @@ Following that line, if a front end like React or angular where to be adopted, t
 1.- GET /search?name=’jorhe’  , 200 if ok
  
  
-# Design notes:
+## Design notes:
 The following rationales and assumptions have been taken:
  
 1.- Security: Security concerns have been mostly omitted, also roles haven't been put in place as roles and authentications should come from an LDAP or credential manager (ex: Facebook, Google, Github).
